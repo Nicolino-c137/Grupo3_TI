@@ -42,7 +42,7 @@ def mostrar_datos_cabecera(cabecera):
 
 #Subprograma que verifica que el archivo sea BMP
 def verificar_archivo(archivo):
-    cabecera = archivo.read(54) #se leen los 54 correspondientes
+    cabecera = archivo.read(54) #se leen los 54 bytes correspondientes
     bfType = cabecera[0:2].decode("utf-8") #se decodifica los bytes que identifican el archivo
     if bfType=="BM":
         mostrar_datos_cabecera(cabecera)
