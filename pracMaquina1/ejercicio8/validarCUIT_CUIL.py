@@ -16,7 +16,7 @@ def validar(cuit):
         #Si el reto es 0, entonces el dígito verificador debe ser 0
         if resto == 0:
             retorno = 0 == int(cuit[10])
-        #Si el resto es 1, entonces se debe cambiar el prefijo del CUIT/CUIL a 23 y volver a calcular
+        #Si el resto es 1, entonces se debe cambiar el prefijo del CUIT/CUIL a 23 (los primeros 2 dígitos) y volver a calcular
         elif resto == 1:
             cuit[0] = "2"
             cuit[1] = "3"
