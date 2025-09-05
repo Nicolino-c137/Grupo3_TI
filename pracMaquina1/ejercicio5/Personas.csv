@@ -1,0 +1,21 @@
+apellido_nombre,direccion,dni,estudios_primarios,estudios_secundarios,estudios_universitarios,vivienda_propia,obra_social,trabaja,es_jubilado,tiene_hijos
+Gómez María,Calle Falsa 123,12345678,s,s,n,s,s,n,s,s
+Rodríguez Juan,Avenida Siempre Viva 456,23456789,s,s,s,n,s,s,n,s
+López Ana,Boulevard de los Sueños 789,34567890,s,n,n,s,n,n,n,n
+Martínez Carlos,Plaza Central 101,45678901,s,s,s,s,s,s,n,s
+Sánchez Laura,Calle de la Felicidad 202,56789012,s,s,s,n,s,n,n,n
+Pérez Jorge,Avenida Principal 303,67890123,s,n,n,n,n,n,n,n
+Ramírez Sofía,Río Negro 404,78901234,s,s,n,s,s,n,s,s
+Torres Miguel,Océano Pacífico 505,89012345,s,s,s,s,s,s,n,n
+Flores Valeria,Montaña Nevada 606,90123456,s,n,n,s,s,n,n,s
+Díaz Daniel,Campo Verde 707,01234567,s,s,s,n,n,n,s,n
+Ruiz Gabriela,Lago Azul 808,11223344,s,s,n,s,s,n,n,s
+Gutiérrez Pedro,Bosque Encantado 909,22334455,s,s,n,n,s,n,n,s
+Hernández Paula,Valle del Sol 1010,33445566,s,n,n,s,n,n,n,n
+Jiménez Ricardo,Puente de la Amistad 1111,44556677,s,s,s,s,s,s,n,s
+González Marina,Camino de las Estrellas 1212,55667788,s,s,n,s,n,n,n,n
+Vargas Nicolás,Sendero del Deseo 1313,66778899,s,s,s,n,s,s,n,n
+Castro Andrea,Parque de las Flores 1414,77889900,s,n,n,s,s,n,s,s
+Morales Felipe,Callejón de los Secretos 1515,88990011,s,s,n,n,n,n,n,s
+Silva Lucía,Mirador del Cielo 1616,99001122,s,s,s,s,s,s,s,n
+Ortega Eduardo,Puerto de los Sueños 1717,00112233,s,n,n,s,s,n,n,n
