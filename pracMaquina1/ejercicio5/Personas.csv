@@ -1,4 +1,4 @@
-apellido_nombre,direccion,dni,estudios_primarios,estudios_secundarios,estudios_universitarios,vivienda_propia,obra_social,trabaja,es_jubilado,tiene_hijos
+apellidoYnombre,direccion,dni,estudiosPrimarios,estudiosSecundarios,estudiosUniversitarios,viviendaPropia,obraSocial,trabaja,esJubilado,tieneHijos
 Gómez María,Calle Falsa 123,12345678,s,s,n,s,s,n,s,s
 Rodríguez Juan,Avenida Siempre Viva 456,23456789,s,s,s,n,s,s,n,s
 López Ana,Boulevard de los Sueños 789,34567890,s,n,n,s,n,n,n,n
