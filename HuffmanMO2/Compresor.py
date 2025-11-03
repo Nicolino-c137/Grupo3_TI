@@ -1,6 +1,7 @@
 from collections import defaultdict, Counter
 from ClaseNodo import Nodo
 import heapq #Para mejor eficiencia en la construcción del árbol (recomendado por Copilot)
+import json
 
 def construirArbolHuffman(frecuencias):
     heap = [Nodo(s, f) for s, f in frecuencias.items()]
@@ -66,9 +67,18 @@ def comprimir(texto, arboles, codigosAscii):
     return comprimido
 
 
-def Compresor(texto): 
+def Compresor(texto, archivo_salida="comprimido.txt"): 
     arboles, codigosAscii = huffmanMarkovOrden2(texto)
-    #print(arboles)
     comprimido = comprimir(texto, arboles, codigosAscii)
+    print(codigosAscii)
+    print(arboles)
     print("Texto original:", texto)
     print("Texto comprimido:", comprimido)
+    datos = {
+        "codigosAscii": codigosAscii,
+        "arboles": arboles,
+        "comprimido": comprimido
+    }
+    with open(archivo_salida, "w", encoding="utf-8") as f:
+        json.dump(datos, f, ensure_ascii=False, indent=4)
+    print(f"\nDatos guardados en {archivo_salida}")
