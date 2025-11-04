@@ -44,6 +44,8 @@ def huffmanMarkovOrden2(texto):
         contexto = texto[i:i + 2]
         simbolo = texto[i + 2]
         transiciones[contexto][simbolo] += 1
+    #Como la cadena se repite sistemáticamente, añadimos la transición de los últimos 2 símbolos al inicio
+    transiciones[texto[-2:]][texto[0]] += 1
     arboles = {}
     for contexto, frecuencias in transiciones.items():
         arbol = construirArbolHuffman(frecuencias)
@@ -67,11 +69,9 @@ def comprimir(texto, arboles, codigosAscii):
     return comprimido
 
 
-def Compresor(texto, archivo_salida="comprimido.txt"): 
+def compresor(texto, archivo_salida="HuffmanMO2/comprimido.txt"): 
     arboles, codigosAscii = huffmanMarkovOrden2(texto)
     comprimido = comprimir(texto, arboles, codigosAscii)
-    print(codigosAscii)
-    print(arboles)
     print("Texto original:", texto)
     print("Texto comprimido:", comprimido)
     datos = {
@@ -81,4 +81,3 @@ def Compresor(texto, archivo_salida="comprimido.txt"):
     }
     with open(archivo_salida, "w", encoding="utf-8") as f:
         json.dump(datos, f, ensure_ascii=False, indent=4)
-    print(f"\nDatos guardados en {archivo_salida}")
