@@ -1,4 +1,4 @@
-from Compresor import Compresor
+from Compresor import compresor
 from Descompresor import descomprimir
 import json
 
@@ -9,9 +9,8 @@ def cargar_datos(archivo_salida="comprimido.txt"):
 
 
 if __name__ == "__main__":
-    with open("archivo.txt", "r", encoding="utf-8") as f:
+    with open("HuffmanMO2/archivo.txt", "r", encoding="utf-8") as f:
         texto = f.read()
-    Compresor(texto)
-    codAscii, arboles, comprimido = cargar_datos("comprimido.txt")
-    texto_recuperado = descomprimir(comprimido, arboles, codAscii)
-    print("\nTexto descomprimido:", texto_recuperado)
+    compresor(texto)
+    codAscii, arboles, comprimido = cargar_datos("HuffmanMO2/comprimido.txt")
+    descomprimir(comprimido, arboles, codAscii)
