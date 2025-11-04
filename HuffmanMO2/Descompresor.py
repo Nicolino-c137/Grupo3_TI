@@ -22,4 +22,6 @@ def descomprimir(comprimido, arboles, codigosAscii):
                 # Actualizamos el contexto a los últimos dos caracteres del texto reconstruido
                 contexto_actual = texto[-2:]
                 break
-    return texto
+    print("Texto descomprimido:", texto)
+    with open("HuffmanMO2/descomprimido.txt", "w", encoding="utf-8") as f:
+        f.write(texto)
