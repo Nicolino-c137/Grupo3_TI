@@ -3,7 +3,9 @@ import struct, csv, os
 #Guardamos los datos de las personas en una lista de diccionarios
 def getDatos():
     personas = []
-    with open("PracMaquina1/ejercicio5/Personas.csv", "r", encoding="utf-8") as archi:
+    ruta = os.getcwd()
+    ruta = os.path.join(ruta, "Personas.csv")
+    with open(ruta, "r", encoding="utf-8") as archi:
         lector_csv = csv.DictReader(archi)
         for fila in lector_csv:
             personas.append(fila)
@@ -28,7 +30,9 @@ def unpackFlags(byte):
 def guardarFijo(personas):
     #De esta forma decimos que apellido y nombre tiene 50 bytes, direccion 40, dni 8 y un byte para los flags
     formato = "50s40s8sB"
-    with open("pracMaquina1/ejercicio5/fijos.dat", "wb") as f:
+    ruta = os.getcwd()
+    ruta = os.path.join(ruta, "fijos.dat")
+    with open(ruta, "wb") as f:
         #Con ljust nos aseguramos que los strings tengan la longitud correcta, ya que estamos trabajando con un formato fijo
         for p in personas:
             apellidoYnombre = p["apellidoYnombre"].ljust(50)
@@ -43,7 +47,9 @@ def guardarFijo(personas):
 def leerFijo():
     personas = []
     formato = "50s40s8sB"
-    with open("pracMaquina1/ejercicio5/fijos.dat", "rb") as f:
+    ruta = os.getcwd()
+    ruta = os.path.join(ruta, "fijos.dat")
+    with open(ruta, "rb") as f:
         #Mientras podamos leer un chunk del tamaño del formato, lo desempaquetamos y lo agregamos a la lista
         while chunk := f.read(struct.calcsize(formato)):
             apellidoYnombre, direccion, dni, flags = struct.unpack(formato, chunk)
@@ -85,7 +91,9 @@ Tiene Hijos: {p["tieneHijos"]}
 
 #Escribimos los datos en un archivo binario con formato variable
 def guardarVariable(personas):
-    with open("pracMaquina1/ejercicio5/variable.dat", "wb") as f:
+    ruta = os.getcwd()
+    ruta = os.path.join(ruta, "variable.dat")
+    with open(ruta, "wb") as f:
         for p in personas:
             apellidoYnombre = p["apellidoYnombre"].encode("utf-8")
             direccion = p["direccion"].encode("utf-8")
@@ -101,7 +109,9 @@ def guardarVariable(personas):
 #Recuperamos los datos del archivo binario con formato variable  
 def leerVariable():
     personas = []
-    with open("pracMaquina1/ejercicio5/variable.dat", "rb") as f:
+    ruta = os.getcwd()
+    ruta = os.path.join(ruta, "variable.dat")
+    with open(ruta, "rb") as f:
         while True:
             #Leemos el primer campo, si no hay nada mas que leer, salimos del bucle
             bof = f.read(1)
