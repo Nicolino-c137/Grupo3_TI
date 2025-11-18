@@ -1,4 +1,4 @@
-import math
+import math, os
 
 #Leemos el archivo y lo guardamos como una secuencia de bytes
 def getFuente(ruta):
@@ -73,7 +73,8 @@ def redundancia(entropia, entropiaCond, frecuencias):
 
 if __name__ == "__main__":
     print("Cargue un archivo en la carpeta e ingrese su nombre con la extensión")
-    ruta = "pracMaquina1/ejercicio3/" + input()
+    ruta = os.getcwd()
+    ruta = os.path.join(ruta, str(input()))
     fuente = getFuente(ruta)
     frecuenciasSimbolos = getFrecuencias(fuente)
     frecuenciasBigrama = getFrecuenciasBigrama(fuente)
