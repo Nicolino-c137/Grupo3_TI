@@ -1,5 +1,5 @@
 #Se hace uso del módulo struct para desempaquetar los bytes leídos del archivo
-import struct
+import struct, os
 
 def wav(ruta):
     with open (ruta, "rb") as wav:
@@ -35,6 +35,7 @@ def wav(ruta):
         
 if __name__ == "__main__": 
     print("Cargue un archivo en la carpeta e ingrese su nombre con la extensión")
-    ruta = "pracMaquina1/ejercicio1/" + str(input())
+    ruta = os.getcwd() #Es posible que se deba de hacer cd ejercicio1 en el terminal antes de ejecutar el script por si ocurre un error de path
+    ruta = os.path.join(ruta, str(input()))
     if not wav(ruta):
         print("El archivo cargado no es WAV")  
