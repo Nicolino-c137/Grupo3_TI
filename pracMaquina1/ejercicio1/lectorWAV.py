@@ -35,7 +35,7 @@ def wav(ruta):
         
 if __name__ == "__main__": 
     print("Cargue un archivo en la carpeta e ingrese su nombre con la extensión")
-    ruta = os.getcwd() #Es posible que se deba de hacer cd ejercicio1 en el terminal antes de ejecutar el script por si ocurre un error de path
+    ruta = os.getcwd() #Es posible que se deba hacer cd pracMaquina1/ejercicio1 en la terminal antes de ejecutar el script en el caso que haya error de path
     ruta = os.path.join(ruta, str(input()))
     if not wav(ruta):
         print("El archivo cargado no es WAV")  
