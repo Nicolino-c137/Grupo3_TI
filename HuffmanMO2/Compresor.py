@@ -54,6 +54,18 @@ def huffmanMarkovOrden2(texto):
     codigosAscii = getPseudoAscii(list(arboles.keys()))
     return arboles, codigosAscii
 
+def bits_a_bytes(bits):
+    # Aseguramos que la cantidad de bits sea múltiplo de 8
+    resto = len(bits) % 8
+    if resto != 0:
+        bits += '0' * (8 - resto)
+    # Convertimos de string binario a bytes
+    byte_array = bytearray()
+    for i in range(0, len(bits), 8):
+        byte = bits[i:i+8]
+        byte_array.append(int(byte, 2))
+    return bytes(byte_array)
+
 #A partir de los 2 primeros caracteres (en pseudo ASCII) y los códigos de Huffman generados, comprimimos el texto
 #El consecuente carácter se codifica según el contexto de los 2 caracteres previos, luego se avanza 1 carácter y se repite el proceso
 def comprimir(texto, arboles, codigosAscii):
@@ -69,15 +81,18 @@ def comprimir(texto, arboles, codigosAscii):
     return comprimido
 
 
-def compresor(texto, archivo_salida="HuffmanMO2/comprimido.txt"): 
+def compresor(texto, archivo_salida="comprimido.bin"): 
     arboles, codigosAscii = huffmanMarkovOrden2(texto)
-    comprimido = comprimir(texto, arboles, codigosAscii)
-    print("Texto original:", texto)
-    print("Texto comprimido:", comprimido)
-    datos = {
+    comprimido_bits = comprimir(texto, arboles, codigosAscii)
+    comprimido_bytes = bits_a_bytes(comprimido_bits)
+    #print("Texto original:", texto)
+    #print("Texto comprimido:", comprimido_bits)
+    cabecera = {
         "codigosAscii": codigosAscii,
         "arboles": arboles,
-        "comprimido": comprimido
     }
-    with open(archivo_salida, "w", encoding="utf-8") as f:
-        json.dump(datos, f, ensure_ascii=False, indent=4)
+    with open("cabecera.json", "w", encoding = "utf-8") as f:
+        json.dump(cabecera, f, ensure_ascii=False)
+        
+    with open(archivo_salida, "wb") as f:
+        f.write(comprimido_bytes)
