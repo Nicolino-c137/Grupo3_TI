@@ -78,16 +78,23 @@ def Capacidad_Canal(Canal,R):
 
 
 if __name__=="__main__":
+    # El problema del ejercicio estaba en como se usaba el parametro R, ya que este no dependia de la matriz del canal. 
+    # Como consecuencia, sin importar el R que se ingrese siempre se calculaba la capacidad del canal 3x3.
+    # Ahora, el parametro R se usa para definir el tamaño de la matriz del canal.
+    # y la matriz del canal se ingresa por el usuario.
     print("2_ Canal de orden 2")
     print("3_ Canal de orden 3")
     print("4_ Canal de orden 4")
     R = int(input("Por favor, ingrese un valor para el canal cargado: "))
-    canal = np.array([
-        [0.6, 0.3, 0.1],
-        [0.2, 0.5, 0.3],
-        [0.4, 0.2, 0.4]
-    ])
+    print(f"Ingrese la matriz del canal {R}x{R}, cada fila separada por espacios:")
+    canal = []
+    for i in range(R):
+        fila = list(map(float, input(f"Fila {i+1}: ").split()))
+        canal.append(fila)
+    canal = np.array(canal)
     Capacidad_Canal(canal,R)
 
 
+
     
+
