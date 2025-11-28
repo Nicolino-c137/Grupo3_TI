@@ -4,12 +4,13 @@ def bytes_a_bits(data):
     """Convierte una secuencia de bytes en un string de bits."""
     return ''.join(f'{byte:08b}' for byte in data)
 
-def descomprimir(archivo_comprimido="comprimido.bin", archivo_cabecera="cabecera.json"):
+def descomprimir(archivo_comprimido="HuffmanMO2/comprimido.bin", archivo_cabecera="HuffmanMO2/cabecera.json"):
     # --- 1. Cargar la cabecera JSON (diccionarios de Huffman y pseudo ASCII) ---
     with open(archivo_cabecera, "r", encoding="utf-8") as f:
         cabecera = json.load(f)
     arboles = cabecera["arboles"]
     codigosAscii = cabecera["codigosAscii"]
+    longitud_bits = cabecera["longitud_bits"]
 
     # --- 2. Leer el archivo comprimido en binario ---
     with open(archivo_comprimido, "rb") as f:
@@ -17,6 +18,7 @@ def descomprimir(archivo_comprimido="comprimido.bin", archivo_cabecera="cabecera
 
     # --- 3. Convertir los bytes a una cadena de bits ---
     comprimido = bytes_a_bits(datos_binarios)
+    comprimido = comprimido[:longitud_bits]  # Recortamos a la longitud original de bits
 
     # --- 4. Reconstruir el texto ---
     ascii_a_contexto = {v: k for k, v in codigosAscii.items()}  # Invertimos para buscar el contexto inicial
@@ -40,10 +42,8 @@ def descomprimir(archivo_comprimido="comprimido.bin", archivo_cabecera="cabecera
                 texto += simbolo
                 contexto_actual = texto[-2:]
                 break
-    if texto.endswith(texto[:1]):
-        texto = texto[:-1] 
 
     # --- 6. Guardar y mostrar el resultado ---
     print("Texto descomprimido:", texto)
-    with open("descomprimido.txt", "w", encoding="utf-8") as f:
+    with open("HuffmanMO2/descomprimido.txt", "w", encoding="utf-8") as f:
         f.write(texto)

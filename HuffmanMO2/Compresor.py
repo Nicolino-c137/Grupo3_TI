@@ -81,17 +81,19 @@ def comprimir(texto, arboles, codigosAscii):
     return comprimido
 
 
-def compresor(texto, archivo_salida="comprimido.bin"): 
+def compresor(texto, archivo_salida="HuffmanMO2/comprimido.bin"): 
     arboles, codigosAscii = huffmanMarkovOrden2(texto)
     comprimido_bits = comprimir(texto, arboles, codigosAscii)
     comprimido_bytes = bits_a_bytes(comprimido_bits)
-    #print("Texto original:", texto)
-    #print("Texto comprimido:", comprimido_bits)
+    len_bits = len(comprimido_bits)
+    print("Texto original:", texto)
+    print("Texto comprimido (bits):", comprimido_bits)
     cabecera = {
         "codigosAscii": codigosAscii,
         "arboles": arboles,
+        "longitud_bits": len_bits
     }
-    with open("cabecera.json", "w", encoding = "utf-8") as f:
+    with open("HuffmanMO2/cabecera.json", "w", encoding = "utf-8") as f:
         json.dump(cabecera, f, ensure_ascii=False)
         
     with open(archivo_salida, "wb") as f:
